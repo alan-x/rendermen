@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+
+<p><%-个人信息%></p>
+
+<p>姓名: <%=model.name%></p>
+
+<p>性别: <%if(model.sex===1){%>男<%}else{%>女<%}%></p>
+
+<p> 书单:</p>
+<%for(var i=0;i<model.book.length;i++) {%>
+    <p><%=model.book[i]%></p>
+<%}%>
+
+</body>
+</html>
