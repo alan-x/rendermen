@@ -1,4 +1,4 @@
-const tokenlize = require('./../src/tokenlizer').tokenlize
+const tokenlize = require('./../src/tokenlize').tokenlize
 
 
 describe('tokenlizer', () => {
