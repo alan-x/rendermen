@@ -1,9 +1,14 @@
-const factory = require('./../src/renderermen').factory
 const render = require('./../src/renderermen').render
+
+describe('text',()=>{
+    test('text',()=>{
+        expect(render(`123`)()).toBe(`123`)
+    })
+})
 
 describe("variable", () => {
     test("render variable", () => {
-        expect(factory('<%=model.username%>')).toBe('var template=\'\';template+=\'\';template+=model.username;template+=\'\';return template;')
+        expect(render('<%=model.username%>')).toBe('var template=\'\';template+=\'\';template+=model.username;template+=\'\';return template;')
     })
     test('render variable', () => {
         expect(render('<%=model.username%>')({username: '111'})).toBe("111")
@@ -40,6 +45,22 @@ describe('render for', () => {
     test("render for", () => {
         expect(factory(`<% for (var i=0;i<10;i++) { %><h2><%= i %></h2><%}%>`))
             .toBe("var template='';template+=''; for (var i=0;i<10;i++) { template+='<h2>';template+= i ;template+='</h2>';}template+='';return template;"
+            )
+    })
+    test('render for', () => {
+        expect(render(`<% for (var i=0;i<10;i++) { %><h2><%= i %></h2><%}%>`)({
+            user: {
+                name: 'me'
+            }
+        })).toBe("var template='';template+=''; for (var i=0;i<10;i++) { template+='<h2>';template+= i ;template+='</h2>';}template+='';return template;")
+    })
+})
+
+describe('render ', () => {
+    test("text", () => {
+        expect(render(`123`)())
+            .toBe(
+                "var template='';template+=''; for (var i=0;i<10;i++) { template+='<h2>';template+= i ;template+='</h2>';}template+='';return template;"
             )
     })
     test('render for', () => {

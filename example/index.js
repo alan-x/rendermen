@@ -9,7 +9,9 @@ fs.readFile('./index.html', function (err, data) {
     }
     var cache = render(data.toString())
     http.createServer(function (request, response) {
-        response.end(cache({name: '我是作者',sex:0,book:["书1","书2","书3","书4"]}))
+        let result=cache({name: '我是作者',sex:0,book:["书1","书2","书3","书4"]})
+        console.log(result)
+        response.end(result)
     }).listen(8888)
 
 })
